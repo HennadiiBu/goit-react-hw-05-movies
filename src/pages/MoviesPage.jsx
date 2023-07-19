@@ -14,7 +14,7 @@ function MoviesPage() {
         </ul>
         <li>Additional information </li>
         <ul>
-          <li> 
+          <li>
             <NavLink to="cast">Cast</NavLink>
           </li>
           <li>

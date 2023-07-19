@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import Layuot from './Layuot';
-import Tranding from './Tranding/Tranding';
+import Tranding from 'pages/Tranding';
 import MoviesPage from 'pages/MoviesPage';
 import Review from './Review/Review';
 import Cast from './Cast/Cast';
