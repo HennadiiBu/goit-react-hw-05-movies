@@ -1,16 +1,20 @@
+import { Route, Routes } from 'react-router-dom';
+import Layuot from './Layuot';
+import Tranding from './Tranding/Tranding';
+import MoviesPage from 'pages/MoviesPage';
+import Review from './Review/Review';
+import Cast from './Cast/Cast';
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <Routes>
+      <Route path="/" element={<Layuot />}>
+        <Route index element={<Tranding />} />
+        <Route path="movies" element={<MoviesPage />}>
+          <Route path="review" element={<Review />} />
+          <Route path="cast" element={<Cast />} />
+        </Route>
+      </Route>
+    </Routes>
   );
 };
