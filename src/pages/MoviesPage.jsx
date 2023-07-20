@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 
 function MoviesPage() {
   return (
@@ -22,6 +22,7 @@ function MoviesPage() {
           </li>
         </ul>
       </ul>
+      <Outlet/>
     </div>
   );
 }
