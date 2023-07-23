@@ -1,23 +1,27 @@
 import apiTheMovieDB from 'Api/Api';
 import Genres from 'components/Genres/Genres';
 import React, { useEffect, useState } from 'react';
-import { Link, NavLink, useLocation, useParams } from 'react-router-dom';
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useLocation,
+  useParams,
+} from 'react-router-dom';
 
 function MoviesDatailesPage() {
   const { movieId } = useParams();
   const location = useLocation();
   const [movie, setMovie] = useState(null);
   const [error, setError] = useState(null);
-  const [locationFrom] = useState(
-    location?.state?.from ?? '/'
-  );
+  const [locationFrom] = useState(location?.state?.from ?? '/');
 
   useEffect(() => {
     apiTheMovieDB
       .fetchDetailsMovie(movieId)
       .then(setMovie)
       .catch(err => {
-        setError(err)
+        setError(err);
         return console.log(error);
       });
   }, [error, movieId]);
@@ -56,6 +60,7 @@ function MoviesDatailesPage() {
               <NavLink to="review">Reviews</NavLink>
             </li>
           </ul>
+          <Outlet />
         </section>
       )}
     </>

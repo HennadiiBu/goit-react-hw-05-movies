@@ -23,12 +23,11 @@ export const App = () => {
     <Routes>
       <Route path="/" element={<Layuot />}>
         <Route index element={<Tranding data={data} />} />
-        <Route path="movies" element={<MoviesPage />}>
-
+        <Route path="movies" element={<MoviesPage />} />
+        <Route path="movies/:movieId" element={<MoviesDatailesPage />}>
           <Route path="review" element={<Review />} />
           <Route path="cast" element={<Cast />} />
         </Route>
-        <Route path="movies/:movieId" element={<MoviesDatailesPage />} />
       </Route>
     </Routes>
   );
