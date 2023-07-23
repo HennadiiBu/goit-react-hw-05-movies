@@ -6,26 +6,29 @@ import Review from './Review/Review';
 import Cast from './Cast/Cast';
 import { useEffect, useState } from 'react';
 import apiTheMovieDB from '../Api/Api';
+import MoviesDatailesPage from 'pages/MoviesDatailesPage';
 
 export const App = () => {
   const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
+  const [setError] = useState(null);
 
   useEffect(() => {
     apiTheMovieDB
       .fetchTrendingDayMovie()
       .then(data => setData(data.results))
       .catch(setError);
-  }, []);
+  }, [setError]);
 
   return (
     <Routes>
       <Route path="/" element={<Layuot />}>
         <Route index element={<Tranding data={data} />} />
         <Route path="movies" element={<MoviesPage />}>
+
           <Route path="review" element={<Review />} />
           <Route path="cast" element={<Cast />} />
         </Route>
+        <Route path="movies/:movieId" element={<MoviesDatailesPage />} />
       </Route>
     </Routes>
   );

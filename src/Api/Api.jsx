@@ -11,17 +11,10 @@ const BASE_URL_IMAGE = () => {
 
 const fetchTrendingDayMovie = async () => {
   try {
-    // const response = await fetch(
-    //   `${BASE_URL}trending/${mediaType}/${timeWindow}?api_key=${key}`
-    // );
-    // const r = await response.json();
-    // return r.results;
-
     const responce = await axios(
-        `${BASE_URL}trending/${mediaType}/${timeWindow}?api_key=${key}`
-      );
-      return responce.data;
-
+      `${BASE_URL}trending/${mediaType}/${timeWindow}?api_key=${key}`
+    );
+    return responce.data;
   } catch (message) {
     return console.log(message);
   }
@@ -29,11 +22,10 @@ const fetchTrendingDayMovie = async () => {
 
 const fetchSearchQueryMovie = async query => {
   try {
-    const response = await fetch(
+    const responce = await axios(
       `${BASE_URL}search/movie?query=${query}&api_key=${key}`
     );
-    const r = await response.json();
-    return r.results;
+    return responce.data;
   } catch (message) {
     return console.log(message);
   }
@@ -41,8 +33,10 @@ const fetchSearchQueryMovie = async query => {
 
 const fetchDetailsMovie = async id => {
   try {
-    const response = await fetch(`${BASE_URL}movie/${id}?api_key=${key}`);
-    return await response.json();
+    const responce = await axios(
+      `${BASE_URL}movie/${id}?api_key=${key}`
+    );
+    return responce.data;
   } catch (message) {
     return console.log(message);
   }
@@ -50,11 +44,10 @@ const fetchDetailsMovie = async id => {
 
 const fetchCreditsMovie = async id => {
   try {
-    const response = await fetch(
+    const responce = await axios(
       `${BASE_URL}movie/${id}/credits?api_key=${key}`
     );
-    const r = await response.json();
-    return r.cast;
+    return responce.data;
   } catch (message) {
     return console.log(message);
   }
@@ -62,11 +55,10 @@ const fetchCreditsMovie = async id => {
 
 const fetchReviewsMovie = async id => {
   try {
-    const response = await fetch(
+    const responce = await axios(
       `${BASE_URL}movie/${id}/reviews?api_key=${key}`
     );
-    const r = await response.json();
-    return r.results;
+    return responce.data;
   } catch (message) {
     return console.log(message);
   }
