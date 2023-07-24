@@ -27,9 +27,10 @@ const Searchbar = ({ onSubmit }) => {
         type="text"
         autoComplete="off"
         autoFocus
-        placeholder="Enter the query to find the film"
+        placeholder="Enter the query..."
         onChange={handleQueryChange}
         value={query}
+        style={{marginRight:'10px'}}
       />
       <button type="submit">Find</button>
     </form>

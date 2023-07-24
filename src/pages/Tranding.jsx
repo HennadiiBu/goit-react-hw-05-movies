@@ -1,7 +1,7 @@
 import TrandingList from 'components/TrandingList/TrandingList';
 import React from 'react';
 
-function Tranding({data}) {
+function Tranding({ data }) {
   return (
     <div>
       <h1>Tranding today</h1>
