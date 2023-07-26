@@ -1,7 +1,21 @@
 import TrandingList from 'components/TrandingList/TrandingList';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import apiTheMovieDB from '../Api/Api'
 
-function Tranding({ data }) {
+
+function Tranding() {
+
+  const [data, setData] = useState(null);
+  const [setError] = useState(null);
+
+  useEffect(() => {
+    apiTheMovieDB
+      .fetchTrendingDayMovie()
+      .then(data => setData(data.results))
+      .catch(setError);
+  }, [setError]);
+
+
   return (
     <div>
       <h1>Tranding today</h1>

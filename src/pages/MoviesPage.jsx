@@ -28,11 +28,13 @@ const MoviesPage = () => {
 
   const handleFormSubmit = query => {
     setMovies(null);
+    console.log(query)
     navigate({
       ...location,
       search: `query=${query}`,
     });
   };
+
   return (
     <section>
       <>
