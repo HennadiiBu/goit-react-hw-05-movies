@@ -1,19 +1,21 @@
 import { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import Searchbar from 'components/Searchbar/Searchbar';
 import MoviesList from 'components/MoviesList/MoviesList';
 import apiTheMovieDB from 'Api/Api';
 
 const MoviesPage = () => {
   const navigate = useNavigate();
-  const location = useLocation();
+
   const [movies, setMovies] = useState(null);
   const [query, setQuery] = useState('');
   const [error, setError] = useState(null);
+  const [searchParams] = useSearchParams();
+  const query1 = searchParams.get('query');
 
   useEffect(() => {
-    setQuery(new URLSearchParams(location.search).get('query'));
-  }, [location.search]);
+    setQuery(query1);
+  }, [query1]);
 
   useEffect(() => {
     query &&
@@ -28,9 +30,8 @@ const MoviesPage = () => {
 
   const handleFormSubmit = query => {
     setMovies(null);
-    console.log(query)
+    console.log(query);
     navigate({
-      ...location,
       search: `query=${query}`,
     });
   };
