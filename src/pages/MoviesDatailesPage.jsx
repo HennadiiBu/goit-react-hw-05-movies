@@ -1,6 +1,6 @@
 import apiTheMovieDB from 'Api/Api';
 import Genres from 'components/Genres/Genres';
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import {
   Link,
   NavLink,
@@ -43,7 +43,11 @@ function MoviesDatailesPage() {
             >
               <div style={{ padding_left: '10px' }}>
                 <img
-                  src={movie.poster_path?`${apiTheMovieDB.BASE_URL_IMAGE()}${movie.poster_path}`:`https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg`}
+                  src={
+                    movie.poster_path
+                      ? `${apiTheMovieDB.BASE_URL_IMAGE()}${movie.poster_path}`
+                      : `https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg`
+                  }
                   alt={`poster for the movie ${movie.title}`}
                 />
               </div>
@@ -75,8 +79,9 @@ function MoviesDatailesPage() {
               </ul>
             </div>
           </div>
-
-          <Outlet />
+          <Suspense fallback={<div>Loading...</div>}>
+            <Outlet />
+          </Suspense>
         </section>
       )}
     </>

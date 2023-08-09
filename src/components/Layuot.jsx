@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 
 function Layuot() {
@@ -13,7 +13,7 @@ function Layuot() {
           height: '50px',
           alignItems: 'center',
           boxShadow: '5px 1px 1px black',
-          borderRadius:'2px',
+          borderRadius: '2px',
         }}
       >
         <li>
@@ -23,7 +23,9 @@ function Layuot() {
           <NavLink to="/movies">Movies</NavLink>
         </li>
       </ul>
-      <Outlet />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 }
