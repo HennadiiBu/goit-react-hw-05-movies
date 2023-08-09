@@ -21,7 +21,7 @@ const Searchbar = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} style={{marginLeft:'20px'}}>
       <input
         name="queryToSearch"
         type="text"

@@ -13,9 +13,6 @@ const MoviesPage = () => {
 
   useEffect(() => {
     setQuery(searchQuery);
-  }, [searchQuery]);
-
-  useEffect(() => {
     query &&
       apiTheMovieDB
         .fetchSearchQueryMovie(query)
@@ -24,7 +21,7 @@ const MoviesPage = () => {
           setError(err);
           return console.log(error);
         });
-  }, [error, query]);
+  }, [searchQuery, error, query]);
 
   const handleFormSubmit = query => {
     setSearchParams({ query });

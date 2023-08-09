@@ -14,6 +14,7 @@ function Layuot() {
           alignItems: 'center',
           boxShadow: '5px 1px 1px black',
           borderRadius: '2px',
+          boxSizing: 'border-box',
         }}
       >
         <li>

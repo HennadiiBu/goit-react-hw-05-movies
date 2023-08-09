@@ -14,8 +14,8 @@ function MoviesDatailesPage() {
   const location = useLocation();
   const [movie, setMovie] = useState(null);
   const [error, setError] = useState(null);
-  const [locationFrom] = useState(location?.state?.from ?? '/');
-  console.log(movie);
+  const locationFrom = location?.state?.from ?? '/';
+
   useEffect(() => {
     apiTheMovieDB
       .fetchDetailsMovie(movieId)
@@ -28,17 +28,19 @@ function MoviesDatailesPage() {
 
   return (
     <>
-      <Link to={locationFrom}>Go back</Link>
+      <Link
+        to={locationFrom}
+        style={{ display: 'inline-block', padding: '15px' }}
+      >
+        Go back
+      </Link>
       {movie && (
-        <section
-          style={{
-            display: 'flex',
-          }}
-        >
+        <section>
           <div>
             <div
               style={{
                 display: 'flex',
+                gap: '10px',
               }}
             >
               <div style={{ padding_left: '10px' }}>
@@ -49,6 +51,9 @@ function MoviesDatailesPage() {
                       : `https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg`
                   }
                   alt={`poster for the movie ${movie.title}`}
+                  style={{
+                    maxWidth: '350px',
+                  }}
                 />
               </div>
               <div>

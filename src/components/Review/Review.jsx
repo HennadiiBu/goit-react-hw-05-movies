@@ -6,6 +6,7 @@ function Review() {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState([]);
   const [error, setError] = useState(null);
+
   useEffect(() => {
     apiTheMovieDB
       .fetchReviewsMovie(movieId)
