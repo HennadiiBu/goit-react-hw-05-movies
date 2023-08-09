@@ -15,7 +15,7 @@ function MoviesDatailesPage() {
   const [movie, setMovie] = useState(null);
   const [error, setError] = useState(null);
   const [locationFrom] = useState(location?.state?.from ?? '/');
-
+  console.log(movie);
   useEffect(() => {
     apiTheMovieDB
       .fetchDetailsMovie(movieId)
@@ -43,7 +43,7 @@ function MoviesDatailesPage() {
             >
               <div style={{ padding_left: '10px' }}>
                 <img
-                  src={`${apiTheMovieDB.BASE_URL_IMAGE()}${movie.poster_path}`}
+                  src={movie.poster_path?`${apiTheMovieDB.BASE_URL_IMAGE()}${movie.poster_path}`:`https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg`}
                   alt={`poster for the movie ${movie.title}`}
                 />
               </div>
@@ -63,7 +63,7 @@ function MoviesDatailesPage() {
                 <Genres data={movie.genres} />
               </div>
             </div>
-            <div style={{border:'1px solid'}}>
+            <div style={{ border: '1px solid' }}>
               <div>Additional information </div>
               <ul>
                 <li>

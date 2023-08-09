@@ -4,7 +4,17 @@ const MoviesItem = ({ url, title }) => {
   return (
     <>
       <div>
-        <img src={`${apiTheMovieDB.BASE_URL_IMAGE()}${url}`} alt={title} />
+        <img
+          src={
+            url
+              ? `${apiTheMovieDB.BASE_URL_IMAGE()}${url}`
+              : `https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg`
+          }
+          alt={title}
+          style={{
+            width: '500px'
+          }}
+        />
       </div>
       <h3>{title}</h3>
     </>

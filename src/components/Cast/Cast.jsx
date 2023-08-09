@@ -19,7 +19,7 @@ function Cast() {
 
   return (
     <>
-      {movie && (
+      {movie ? (
         <>
           <h3>Cast:</h3>
           <ul>
@@ -27,10 +27,13 @@ function Cast() {
               <li key={actor.id}>
                 <div>
                   <img
-                    src={`${apiTheMovieDB.BASE_URL_IMAGE()}${
+                    src={actor.profile_path?`${apiTheMovieDB.BASE_URL_IMAGE()}${
                       actor.profile_path
-                    }`}
+                    }`:`https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg`}
                     alt={`actor ${actor.original_name}`}
+                    style={{
+                      width:'200px'
+                    }}
                   />
                   <h3>{actor.original_name}</h3>
                 </div>
@@ -38,7 +41,7 @@ function Cast() {
             ))}
           </ul>
         </>
-      )}
+      ):<p>Actors list not found</p>}
     </>
   );
 }

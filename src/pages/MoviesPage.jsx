@@ -5,17 +5,15 @@ import MoviesList from 'components/MoviesList/MoviesList';
 import apiTheMovieDB from 'Api/Api';
 
 const MoviesPage = () => {
-  const navigate = useNavigate();
-
   const [movies, setMovies] = useState(null);
   const [query, setQuery] = useState('');
   const [error, setError] = useState(null);
-  const [searchParams] = useSearchParams();
-  const query1 = searchParams.get('query');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchQuery = searchParams.get('query');
 
   useEffect(() => {
-    setQuery(query1);
-  }, [query1]);
+    setQuery(searchQuery);
+  }, [searchQuery]);
 
   useEffect(() => {
     query &&
@@ -29,11 +27,7 @@ const MoviesPage = () => {
   }, [error, query]);
 
   const handleFormSubmit = query => {
-    setMovies(null);
-    console.log(query);
-    navigate({
-      search: `query=${query}`,
-    });
+    setSearchParams({ query });
   };
 
   return (
