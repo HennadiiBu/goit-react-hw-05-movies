@@ -13,7 +13,7 @@ function MoviesDatailesPage() {
   const { movieId } = useParams();
   const location = useLocation();
   const [movie, setMovie] = useState(null);
-  const [error, setError] = useState(null);
+
   const locationFrom = location?.state?.from ?? '/';
 
   useEffect(() => {
@@ -21,10 +21,9 @@ function MoviesDatailesPage() {
       .fetchDetailsMovie(movieId)
       .then(setMovie)
       .catch(err => {
-        setError(err);
-        return console.log(error);
+        console.log(err);
       });
-  }, [error, movieId]);
+  }, [movieId]);
 
   return (
     <>

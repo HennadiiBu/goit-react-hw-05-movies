@@ -4,17 +4,15 @@ import apiTheMovieDB from '../Api/Api';
 
 function Tranding() {
   const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     apiTheMovieDB
       .fetchTrendingDayMovie()
       .then(data => setData(data.results))
       .catch(err => {
-        setError(err);
-        return console.log(error);
+        console.log(err);
       });
-  }, [error, setError]);
+  }, []);
 
   return (
     <div>

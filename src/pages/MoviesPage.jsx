@@ -6,22 +6,19 @@ import apiTheMovieDB from 'Api/Api';
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState(null);
-  const [query, setQuery] = useState('');
-  const [error, setError] = useState(null);
+  // const [query, setQuery] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
   const searchQuery = searchParams.get('query');
 
   useEffect(() => {
-    setQuery(searchQuery);
-    query &&
-      apiTheMovieDB
-        .fetchSearchQueryMovie(query)
-        .then(setMovies)
-        .catch(err => {
-          setError(err);
-          return console.log(error);
-        });
-  }, [searchQuery, error, query]);
+    if (!searchQuery) return;
+    apiTheMovieDB
+      .fetchSearchQueryMovie(searchQuery)
+      .then(setMovies)
+      .catch(err => {
+        console.log(err);
+      });
+  }, [searchQuery]);
 
   const handleFormSubmit = query => {
     setSearchParams({ query });
